@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Navigate, Link } from "react-router-dom";
+import Comments from "./components/comments/Comments";
+import Layout from "./components/layout/Layout";
+import AllQuotes from "./pages/AllQuotes";
+import NewQuote from "./pages/NewQuote";
+import NotFound from "./pages/NotFound";
+import QuoteDetail from "./pages/QuoteDetail";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Navigate replace to="/quotes" />} />
+        <Route path="/quotes" element={<AllQuotes />} />
+        <Route path="/new-quote" element={<NewQuote />} />
+        <Route path="/quotes/:quoteId" element={<QuoteDetail />}>
+          <Route
+            path=""
+            element={
+              <div className="centered">
+                <Link className="btn--flat" to="comments">
+                  Load Comments
+                </Link>
+              </div>
+            }
+          />
+          <Route path="comments" element={<Comments />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
   );
 }
 
