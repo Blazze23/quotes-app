@@ -1,4 +1,11 @@
-# Getting Started with Create React App
+# Quotes-App
+
+This is a React single page app, where you can create quotes, add comments to them, and sort them.
+It is built with React and React Router V6.
+
+Live preview available at: [https://react-quoteme.netlify.app](https://react-quoteme.netlify.app)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
